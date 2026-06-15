@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project 3: Interactive Web Elements — DecodeLabs</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+<nav class="nav-container">
+  <div class="nav-inner">
+    <div class="nav-logo">Decode<span>Labs</span> &nbsp;·&nbsp; P3</div>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#counter">Counter</a></li>
+      <li><a href="#todo">Todo</a></li>
+      <li><a href="#search">Search</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="btn-icon js-dark-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+
+      <button class="hamburger js-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#counter">Counter</a>
+    <a href="#todo">Todo List</a>
+    <a href="#search">Live Search</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+</nav>
+<header class="hero">
+  <div class="hero-badge">Project 3 · DecodeLabs 2026</div>
+  <h1>Interactive <em>Web Elements</em></h1>
+  <p>Mastering DOM manipulation, event listeners, and state management through real, working JavaScript widgets.</p>
+</header>
+
+<main class="page">
+
+  <!-- 1. COUNTER — IPO loop demo -->
+  <div class="card" id="counter">
+    <p class="card-label">Widget 01 · IPO Loop</p>
+    <h2>Interactive Counter</h2>
+
+    <div class="counter-display">
+      <div class="counter-num" id="counter-display">0</div>
+      <div class="counter-label">current count</div>
+    </div>
+
+    <div class="counter-controls">
+      <button class="btn btn-danger js-counter-dec" aria-label="Decrease">− Decrease</button>
+      <button class="btn js-counter-reset">Reset</button>
+      <button class="btn btn-success js-counter-inc" aria-label="Increase">+ Increase</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-label">Widget 02 · Keyboard Events</p>
+    <h2>Character Counter</h2>
+
+    <textarea
+      class="char-textarea js-char-input"
+      placeholder="Start typing — watch the counter update in real time…"
+      maxlength="280"
+      aria-label="Message text"
+    ></textarea>
+
+    <div class="char-meta">
+      <span class="char-count js-char-count">0 / 280</span>
+      <div class="char-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="280">
+        <div class="char-bar-fill js-char-bar" style="width: 0%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="card-label">Widget 03 · classList.toggle()</p>
+    <h2>Preference Toggles</h2>
+
+    <div class="toggle-row">
+      <div class="toggle-info">
+        <h3>Email Notifications</h3>
+        <p>Receive project updates by email</p>
+      </div>
+      <label class="switch" aria-label="Email notifications">
+        <input type="checkbox" class="js-toggle" data-label="Email Notifications" checked />
+        <span class="switch-track"></span>
+      </label>
+    </div>
+
+    <div class="toggle-row">
+      <div class="toggle-info">
+        <h3>Auto-Save</h3>
+        <p>Save work automatically every 30s</p>
+      </div>
+      <label class="switch" aria-label="Auto-save">
+        <input type="checkbox" class="js-toggle" data-label="Auto-Save" />
+        <span class="switch-track"></span>
+      </label>
+    </div>
+
+    <div class="toggle-row">
+      <div class="toggle-info">
+        <h3>Public Profile</h3>
+        <p>Make your profile visible to everyone</p>
+      </div>
+      <label class="switch" aria-label="Public profile">
+        <input type="checkbox" class="js-toggle" data-label="Public Profile" checked />
+        <span class="switch-track"></span>
+      </label>
+    </div>
+
+    <div class="toggle-row">
+      <div class="toggle-info">
+        <h3>Beta Features</h3>
+        <p>Opt in to experimental features</p>
+      </div>
+      <label class="switch" aria-label="Beta features">
+        <input type="checkbox" class="js-toggle" data-label="Beta Features" />
+        <span class="switch-track"></span>
+      </label>
+    </div>
+
+    <p id="toggle-status" style="margin-top:1rem; font-size:0.8rem; color:var(--text-hint); min-height:1.2em;"></p>
+  </div>
+
+  <div class="card">
+    <p class="card-label">Widget 04 · Accordion</p>
+    <h2>FAQ — DOM Concepts</h2>
+
+    <div class="accordion-item">
+      <div class="accordion-header js-accordion" role="button" tabindex="0" aria-expanded="false">
+        <h3>What is the DOM?</h3>
+        <span class="accordion-icon" aria-hidden="true">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>The Document Object Model is the browser's live, in-memory map of your HTML — translated from static markup into a tree of programmable objects that JavaScript can read and mutate.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header js-accordion" role="button" tabindex="0" aria-expanded="false">
+        <h3>Why use addEventListener?</h3>
+        <span class="accordion-icon" aria-hidden="true">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>addEventListener decouples your logic from your markup, allows multiple handlers on one element, and provides a clean reference to remove the handler later — unlike inline onclick attributes.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header js-accordion" role="button" tabindex="0" aria-expanded="false">
+        <h3>const vs let — when to use which?</h3>
+        <span class="accordion-icon" aria-hidden="true">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>Use const by default for DOM references and values that never reassign. Use let only when the value must mutate (counters, loop variables). Avoid var — it is function-scoped and prone to hoisting bugs.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header js-accordion" role="button" tabindex="0" aria-expanded="false">
+        <h3>Why prefer textContent over innerHTML?</h3>
+        <span class="accordion-icon" aria-hidden="true">+</span>
+      </div>
+      <div class="accordion-body">
+        <p>textContent treats the value as plain text, preventing Cross-Site Scripting (XSS) attacks. innerHTML parses string as HTML — injecting user-supplied data this way is a critical security vulnerability.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card full" id="todo">
+    <p class="card-label">Widget 05 · Dynamic Node Creation</p>
+    <h2>Todo List — document.createElement() + appendChild()</h2>
+
+    <div class="todo-input-row">
+      <input
+        type="text"
+        class="todo-input js-todo-input"
+        placeholder="Add a new task and press Enter or click Add…"
+        maxlength="120"
+        aria-label="New task"
+      />
+      <button class="btn btn-primary js-todo-add">Add Task</button>
+    </div>
+
+    <ul class="todo-list" id="todo-list" aria-live="polite" aria-label="Task list">
+      <li class="todo-empty" id="todo-empty">No tasks yet — add one above!</li>
+    </ul>
+
+    <p class="todo-stats" id="todo-stats" aria-live="polite"></p>
+  </div>
+
+  <div class="card" id="palette">
+    <p class="card-label">Widget 06 · Dynamic Content Update</p>
+    <h2>Color Palette Generator</h2>
+
+    <div class="color-input-row">
+      <input type="color" id="base-color" value="#3c34b0" aria-label="Pick a base color" />
+      <div style="flex:1">
+        <p style="font-size:0.85rem; font-weight:500;">Pick a base color</p>
+        <p style="font-size:0.75rem; color:var(--text-hint);">5 shades generated automatically — click any swatch to copy hex</p>
+      </div>
+    </div>
+
+    <div class="color-swatches" id="color-swatches"></div>
+  </div>
+
+  <div class="card" id="quiz">
+    <p class="card-label">Widget 07 · State Management</p>
+    <h2>JavaScript DOM Quiz</h2>
+
+    <p class="quiz-question" id="quiz-question">Loading…</p>
+
+    <div class="quiz-options" id="quiz-options"></div>
+
+    <div class="quiz-feedback" id="quiz-feedback" role="alert"></div>
+
+    <div class="quiz-nav">
+      <span class="quiz-progress" id="quiz-progress">Question 1 of 5</span>
+      <button class="btn btn-primary js-quiz-next" id="quiz-next" style="display:none;">Next →</button>
+    </div>
+  </div>
+
+  <div class="card" id="search">
+    <p class="card-label">Widget 08 · Live DOM Filter</p>
+    <h2>Live Search Filter</h2>
+
+    <input
+      type="search"
+      class="search-input js-search"
+      placeholder="Search frontend concepts…"
+      aria-label="Search concepts"
+      aria-controls="search-results"
+    />
+
+    <ul class="search-results" id="search-results" role="list" aria-live="polite"></ul>
+    <p class="no-results" id="no-results">No results — try a different term</p>
+  </div>
+
+</main>
+
+<div class="copied-toast" id="copied-toast" role="status" aria-live="polite"></div>
+
+<footer class="footer">
+  Project 3 — Interactive Web Elements &nbsp;·&nbsp; <strong>DecodeLabs</strong> Batch 2026
+  &nbsp;·&nbsp; Built with Vanilla JS + DOM Manipulation
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
